@@ -45,7 +45,6 @@
             btnDelete = new Button();
             btnUpdate = new Button();
             btnClean = new Button();
-            btnSave = new Button();
             btnLoad = new Button();
             btnAdd = new Button();
             panel1 = new Panel();
@@ -159,7 +158,6 @@
             panel3.Controls.Add(btnDelete);
             panel3.Controls.Add(btnUpdate);
             panel3.Controls.Add(btnClean);
-            panel3.Controls.Add(btnSave);
             panel3.Controls.Add(btnLoad);
             panel3.Controls.Add(btnAdd);
             panel3.Dock = DockStyle.Bottom;
@@ -231,21 +229,10 @@
             btnClean.UseVisualStyleBackColor = false;
             btnClean.Click += btnClean_Click;
             // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.FromArgb(255, 192, 192);
-            btnSave.Location = new Point(116, 25);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(100, 30);
-            btnSave.TabIndex = 2;
-            btnSave.Text = "儲存";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
-            // 
             // btnLoad
             // 
             btnLoad.BackColor = Color.FromArgb(255, 192, 192);
-            btnLoad.Location = new Point(222, 25);
+            btnLoad.Location = new Point(171, 22);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(100, 30);
             btnLoad.TabIndex = 1;
@@ -375,7 +362,6 @@
         private Button btnDelete;
         private Button btnUpdate;
         private Button btnClean;
-        private Button btnSave;
         private Button btnLoad;
         private Button btnAdd;
         private Panel panel1;
