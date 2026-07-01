@@ -14,6 +14,7 @@ namespace CSVAccounting_Progect
         public Form1()
         {
             InitializeComponent();
+            this.dgvItems.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
             //將enum型態轉換成combox可以讀取的型態
             cmbCategory.DataSource = Enum.GetValues(typeof(Category));
             dgvItems.DataSource = items;
@@ -65,7 +66,10 @@ namespace CSVAccounting_Progect
             if (MessageBox.Show("確定刪除?", "警告",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                items.RemoveAt(index);
+                Item item = items[index];
+                items.Remove(item);
+                DBHelper.DeleteItem(item);
+
                 CalcTotal();
             }
 
@@ -98,14 +102,15 @@ namespace CSVAccounting_Progect
             if (MessageBox.Show("確定更新嗎?", "警告",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //Item item= items[index];
-                Item item = new Item();
+                Item item= items[index];
+                //Item item = new Item();
                 item.Date = dtpDate.Value; //Value取質
                 item.Note = txtNote.Text;
                 item.Amount = nudAmount.Value;
                 item.IsIncome = cbxIncome.Checked;
                 item.CategoryType = (Category)cmbCategory.SelectedItem;
                 items[index] = item;
+                DBHelper.UpdateItem(item);
                 CalcTotal();
             }
 
@@ -190,7 +195,7 @@ namespace CSVAccounting_Progect
 
             //}
 
-
+            CalcTotal();
 
         }
 
@@ -218,7 +223,12 @@ namespace CSVAccounting_Progect
 
         private void btnClean_Click(object sender, EventArgs e)
         {
-            items.Clear();
+            if (MessageBox.Show("確定刪除?", "警告",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+                items.Clear();
+            DBHelper.DeleteAllItem();
             CalcTotal();
         }
     }

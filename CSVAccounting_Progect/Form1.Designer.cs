@@ -198,6 +198,7 @@
             // 
             // btnDelete
             // 
+            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnDelete.BackColor = Color.FromArgb(255, 192, 192);
             btnDelete.Location = new Point(868, 25);
             btnDelete.Name = "btnDelete";
@@ -209,6 +210,7 @@
             // 
             // btnUpdate
             // 
+            btnUpdate.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnUpdate.BackColor = Color.FromArgb(255, 192, 192);
             btnUpdate.Location = new Point(761, 25);
             btnUpdate.Name = "btnUpdate";
@@ -220,6 +222,7 @@
             // 
             // btnClean
             // 
+            btnClean.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnClean.BackColor = Color.FromArgb(255, 192, 192);
             btnClean.Location = new Point(655, 25);
             btnClean.Name = "btnClean";
@@ -284,7 +287,7 @@
             dateDataGridViewTextBoxColumn.MinimumWidth = 6;
             dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             dateDataGridViewTextBoxColumn.ReadOnly = true;
-            dateDataGridViewTextBoxColumn.Width = 125;
+            dateDataGridViewTextBoxColumn.Width = 186;
             // 
             // noteDataGridViewTextBoxColumn
             // 
@@ -293,7 +296,7 @@
             noteDataGridViewTextBoxColumn.MinimumWidth = 6;
             noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
             noteDataGridViewTextBoxColumn.ReadOnly = true;
-            noteDataGridViewTextBoxColumn.Width = 125;
+            noteDataGridViewTextBoxColumn.Width = 186;
             // 
             // amountDataGridViewTextBoxColumn
             // 
@@ -302,7 +305,7 @@
             amountDataGridViewTextBoxColumn.MinimumWidth = 6;
             amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
             amountDataGridViewTextBoxColumn.ReadOnly = true;
-            amountDataGridViewTextBoxColumn.Width = 125;
+            amountDataGridViewTextBoxColumn.Width = 185;
             // 
             // categoryTypeDataGridViewTextBoxColumn
             // 
@@ -311,7 +314,7 @@
             categoryTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
             categoryTypeDataGridViewTextBoxColumn.Name = "categoryTypeDataGridViewTextBoxColumn";
             categoryTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            categoryTypeDataGridViewTextBoxColumn.Width = 125;
+            categoryTypeDataGridViewTextBoxColumn.Width = 186;
             // 
             // isIncomeDataGridViewCheckBoxColumn
             // 
@@ -320,7 +323,7 @@
             isIncomeDataGridViewCheckBoxColumn.MinimumWidth = 6;
             isIncomeDataGridViewCheckBoxColumn.Name = "isIncomeDataGridViewCheckBoxColumn";
             isIncomeDataGridViewCheckBoxColumn.ReadOnly = true;
-            isIncomeDataGridViewCheckBoxColumn.Width = 125;
+            isIncomeDataGridViewCheckBoxColumn.Width = 186;
             // 
             // itemBindingSource
             // 

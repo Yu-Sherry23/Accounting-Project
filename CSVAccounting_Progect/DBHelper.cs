@@ -44,18 +44,18 @@ namespace CSVAccounting_Progect
             {
                 conn.Open();
                 string sql = "select * from item";
-                    
-                   
+
+
                 //建資料表
                 using (var cmd = new SqliteCommand(sql, conn))
                 {
-                    using(var reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                         var item=new Item();
+                            var item = new Item();
                             item.Id = Convert.ToInt32(reader["id"]);
-                            item.Date= Convert.ToDateTime(reader["date"]);
+                            item.Date = Convert.ToDateTime(reader["date"]);
                             item.Amount = Convert.ToDecimal(reader["amount"]);
                             item.Note = reader["note"].ToString()!;
                             item.CategoryType = (Category)Enum.Parse(typeof(Category), reader["category"].ToString()!);
@@ -99,7 +99,78 @@ namespace CSVAccounting_Progect
             }
         }
 
+        //刪除
+        public static void DeleteItem(Item item)
+        {
+            using (var conn = new SqliteConnection("Data Source=accounting.db"))
+            {
+                conn.Open();
+                string sql = "delete from item where id=@id";
 
+                using (var cmd = new SqliteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", item.Id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static bool UpdateItem(Item item)
+        {
+            using (var connection = new SqliteConnection("Data Source=accounting.db"))
+            {
+                connection.Open();
+                string sql = @"
+                    update item set                             
+                    date=@date,
+                    note=@note,
+                    amount=@amount,
+                    isincome=@isincome,
+                    category=@category
+                    where id=@id";
+
+
+                using (var cmd = new SqliteCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue(
+                        "@date", item.Date.ToString("yyyy-MM-dd HH:mm:ss")
+                        );
+                    cmd.Parameters.AddWithValue(
+                    "@note", item.Note);
+                    cmd.Parameters.AddWithValue(
+                    "@amount", item.Amount);
+                    cmd.Parameters.AddWithValue(
+                    "@isincome", item.IsIncome ? 1 : 0);
+                    cmd.Parameters.AddWithValue(
+                    "@category", item.CategoryType.ToString());
+                    cmd.Parameters.AddWithValue(
+                        "@id", item.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+
+            return true;
+
+        }
+
+
+
+        public static void DeleteAllItem()
+        {
+            using (var conn = new SqliteConnection("Data Source=accounting.db"))
+            {
+                conn.Open();
+                string sql = "delete from item item";
+
+                using (var cmd = new SqliteCommand(sql, conn))
+                {
+                   
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
 
 
